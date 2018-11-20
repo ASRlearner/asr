@@ -33,12 +33,12 @@ i=0
 #t1为train集终止条件
 t1=$((total*ratio/(ratio+2)))
 #t2为test集终止条件
-t2=$((total/(total+2)+t1))
+t2=$((total/(ratio+2)+t1))
 for x in $data; do
     i=$((i+1))
-	if [$i -le $t1]; then 
-		cp $x $data_dir/train
-    elif [$i -le $t2]; then
+	if [ $i -le $t1 ]; then 
+	cp $x $data_dir/train
+    elif [ $i -le $t2 ]; then
     	cp $x $data_dir/test
     else
     	cp $x $data_dir/dev
