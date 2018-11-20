@@ -53,7 +53,7 @@ if ! tar -xvzf $part.tgz; then
 	exit 1;
 fi
 
-#修改数据目录下所有文件的访问和修改时间
+#加压完文件后生成一个空文件complete
 touch $data/$part/.complete
 
 #如果当前处理的是data_aishell目录则继续解压
