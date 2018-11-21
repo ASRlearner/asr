@@ -45,7 +45,7 @@ for x in $data/*; do
 	if [ $i -le $t1 ]; then 
 		cp -r $x $data_dir/train
     elif [ $i -le $t2 ]; then
-    	echo "i = $i  t2 = $t2"
+    	#echo "i = $i  t2 = $t2"
     	cp -r $x $data_dir/test
     else
     	#这边的语句都运行完后又将916语音复制到test下 原因未知
