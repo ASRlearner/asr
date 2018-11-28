@@ -12,7 +12,7 @@ fi
 # $data/data_aishell/transcript   参数2
 # transcripts文件存储语音序号 以及对应的文本内容
 aishell_audio_dir=$1
-aishell_text=$2/aishell_transcript_v0.8.txt
+aishell_text=$2/transcript.txt
 
 #生成四个目录 其中tmp存放临时标注文件
 train_dir=data/local/train
@@ -58,7 +58,7 @@ for dir in $train_dir $test_dir $dev_dir; do
 	#生成语音到说话人的映射文件utt2spk_all(语音id 说话人id)
 	sed -e 's/\.wav//' $dir/wav.flist | awk -F '/' '{ i=NF-1; printf("%s %s\n",$NF,$i )}' > $dir/utt2spk_all
     #生成对应wav.scp_all文件 存放语音以及对应的文件路径(语音id 语音路径)
-    paste -d' ' $dir/utt.list $dir/wav/flist > $dir/wav.scp_all
+    paste -d' ' $dir/utt.list $dir/wav.flist > $dir/wav.scp_all
     #使用filter_scp.pl文件过滤$aishell_text中$dir/utt.list文件中存在的语音id 将id到文本内容的对应关系
     #输出到$dir/transcripts.txt中
     #使用utils/filter_scp.pl 输入语音id 以及标注文件 生成对应目录下transcripts.txt文件

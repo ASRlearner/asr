@@ -12,13 +12,13 @@ if [ ! -d $data ]; then
 mkdir -p $data
 fi
 
-for x in train test dev; do
-	#把三大目录下的文件转移到wav/data目录下并删除原目录和目录下所有文件
-	cp -r $data_dir/$x/* $data
-	rm -rf $data_dir/$x/*
-done
+#for x in train test dev; do
+#	#把三大目录下的文件转移到wav/data目录下并删除原目录和目录下所有文件
+#	cp -r $data_dir/$x/* $data
+#	rm -rf $data_dir/$x/*
+#done
 
-echo "$0: 数据已经全部转移到 $data 目录下！"
+#echo "$0: 数据已经全部转移到 $data 目录下！"
 
 if [ ! -d $data_dir/train ] ; then
 	echo "$0: 不存在训练集目录,现在创建"
@@ -45,7 +45,6 @@ for x in $data/*; do
 	if [ $i -le $t1 ]; then 
 		cp -r $x $data_dir/train
     elif [ $i -le $t2 ]; then
-    	#echo "i = $i  t2 = $t2"
     	cp -r $x $data_dir/test
     else
     	#这边的语句都运行完后又将916语音复制到test下 原因未知
